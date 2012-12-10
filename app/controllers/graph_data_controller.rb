@@ -1,6 +1,5 @@
 class GraphDataController < ApplicationController
   def show
-    @graphdata = GraphData.find(params[:id])
-    render :text => @graphdata
+    render :file => 'public/data/%s.json' % params[:id]
   end
 end
