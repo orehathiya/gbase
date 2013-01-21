@@ -8,6 +8,11 @@
 </head>
 <body>
 
+<%= form_tag :search_graph, :method => :get do %>
+  <%= text_field_tag "keyword", params[:keyword] %>
+  <%= submit_tag "search" %>
+<% end %>
+
 <%= yield %>
 
 </body>
