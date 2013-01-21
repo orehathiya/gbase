@@ -2,17 +2,11 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
 
+// set callback of change chart type function
 document.addEventListener('DOMContentLoaded', function() {
   select = document.getElementById('chart_type')
   select.addEventListener('change', function() {
-    var chart;
-    if (select.selectedIndex == 0) {
-      chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-    } else if (select.selectedIndex == 1) {
-      chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-    } else {
-      chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-    }
+    var chart = selectChart(select.selectedIndex);
     chart.draw(data, {width: 400, height: 240});
   });
 }, false);
@@ -36,10 +30,21 @@ function drawChart() {
   data = new google.visualization.DataTable(jsonData);
 
   // Instantiate and draw our chart, passing in some options.
-  var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+  var chart = selectChart(<%= @graph.chart_type %>);
   chart.draw(data, {width: 400, height: 240});
 }
 
+function selectChart(index) {
+  var chart;
+  if (index == 0) {
+    chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+  } else if (index == 1) {
+    chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+  } else if (index == 2) {
+    chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+  }
+  return chart;
+}
 </script>
 
 <p id="notice"><%= notice %></p>
@@ -53,7 +58,11 @@ function drawChart() {
   <b>Description:</b>
   <%= @graph.description %>
 </p>
-<%= select_tag(:chart_type, options_for_select([['Pie', 1], ['Bar', 2], ['Line', 3]])) %>
+
+<p>
+  <b>ChartType:</b>
+  <%= select_tag(:chart_type, options_for_select([['Pie', 0], ['Bar', 1], ['Line', 2]],  @graph.chart_type )) %>
+</p>
 
 <div id="chart_div"></div>
 

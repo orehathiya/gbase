@@ -19,6 +19,11 @@
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </div>
+  <div class="field">
+    <%= f.label :chart_type %><br />
+    <%= f.select :chart_type, [['Pie', 0], ['Bar', 1], ['Line', 2]] %>
+  </div>
+
   <%= file_field 'upload', 'datafile' %></p>
 
   <div class="actions">

@@ -40,6 +40,7 @@ class GraphsController < ApplicationController
   # POST /graphs
   # POST /graphs.json
   def create
+    debugger
     @graph = Graph.new(params[:graph])
 
     respond_to do |format|
