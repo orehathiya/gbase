@@ -2,18 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.thumb_list {
-  width: 820px;
-}
-
-.thumb_col {
-  float: left;
-  border: solid 2px #D9DFDF;
-  width: 200px;
-  height: 130px;
-  margin-right: 1px;
-}
-
 .font12 {
   font-size: 14px;
+}
+
+.graph_desc {
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pagination {
+  clear:both;
+  padding: 20px 0;
 }

@@ -1,5 +1,4 @@
 class GraphData < ActiveRecord::Base
-  # attr_accessible :title, :body
   def self.save(id, upload)
     directory = "public/data"
     # create the file path

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gbase</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= form_tag :search_graph, :method => :get do %>
+  <%= text_field_tag "keyword", params[:keyword] %>
+  <%= submit_tag "search" %>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>

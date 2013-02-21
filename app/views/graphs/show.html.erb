@@ -1,4 +1,3 @@
-<%= javascript_include_tag "change_chart_type" %>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
 
@@ -7,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
   select = document.getElementById('chart_type')
   select.addEventListener('change', function() {
     var chart = selectChart(select.selectedIndex);
-    chart.draw(data, {width: 400, height: 240});
+    chart.draw(data, {width: 600, height: 360});
   });
 }, false);
 
@@ -31,7 +30,7 @@ function drawChart() {
 
   // Instantiate and draw our chart, passing in some options.
   var chart = selectChart(<%= @graph.chart_type %>);
-  chart.draw(data, {width: 400, height: 240});
+  chart.draw(data, {width: 600, height: 360});
 }
 
 function selectChart(index) {
