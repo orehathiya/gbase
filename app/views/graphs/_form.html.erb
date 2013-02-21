@@ -1,4 +1,4 @@
-<%= form_for(@graph, :html => {:multipart => true}) do |f| %>
+<%= form_for(@graph, :html => {:onsubmit => "return validateForm();"}) do |f| %>
   <% if @graph.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@graph.errors.count, "error") %> prohibited this graph from being saved:</h2>
@@ -23,8 +23,10 @@
     <%= f.label :chart_type %><br />
     <%= f.select :chart_type, [['Pie', 0], ['Bar', 1], ['Line', 2]] %>
   </div>
-
-  <%= file_field 'upload', 'datafile' %></p>
+  <div class="field">
+    <%= f.label :data %><br />
+    <%= f.text_area :data %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>

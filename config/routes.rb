@@ -1,9 +1,7 @@
 Gbase::Application.routes.draw do
   match 'graphs/search' => 'graphs#search', :as => :search_graph
+  match 'graphs/:id/graphdata' => 'graphs#graphdata', :as => :graphdata
   resources :graphs
-
-  match 'graphdata/:id' => 'graph_data#show'
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

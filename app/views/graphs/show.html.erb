@@ -19,14 +19,8 @@ google.load('visualization', '1', {'packages':['corechart']});
 google.setOnLoadCallback(drawChart);
   
 function drawChart() {
-  var jsonData = $.ajax({
-      url: "/graphdata/<%= @graph.id %>",
-      dataType:"json",
-      async: false
-      }).responseText;
-      
   // Create our data table out of JSON data loaded from server.
-  data = new google.visualization.DataTable(jsonData);
+  data = new google.visualization.DataTable(<%= raw @graph.data.as_json %>);
 
   // Instantiate and draw our chart, passing in some options.
   var chart = selectChart(<%= @graph.chart_type %>);
@@ -65,6 +59,6 @@ function selectChart(index) {
 
 <div id="chart_div"></div>
 
-<%= link_to 'json', :controller => "graph_data", :action => "show", :id => @graph.id %>
+<%= link_to 'json', graphdata_path(@graph) %>
 <%= link_to 'Edit', edit_graph_path(@graph) %> |
 <%= link_to 'Back', graphs_path %>

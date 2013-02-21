@@ -44,7 +44,7 @@ class GraphsController < ApplicationController
     @graph = Graph.new(params[:graph])
 
     respond_to do |format|
-      if @graph.save & GraphData.save(@graph.id, params[:upload])
+      if @graph.save
         format.html { redirect_to @graph, notice: 'Graph was successfully created.' }
         format.json { render json: @graph, status: :created, location: @graph }
       else
@@ -90,6 +90,17 @@ class GraphsController < ApplicationController
     respond_to do |format|
       format.html # search.html.erb
       format.json { render json: @graphs }
+    end
+  end
+
+  # GET /graphs/1/graphdata
+  # GET /graphs/1/graphdata.json
+  def graphdata
+    @graph = Graph.find(params[:id])
+
+    respond_to do |format|
+      format.html # graphdata.html.erb
+      format.json { render json: @graph }
     end
   end
 end
