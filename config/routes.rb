@@ -1,4 +1,5 @@
 Gbase::Application.routes.draw do
+  match 'about' => 'about#index', :as => :about
   match 'graphs/search' => 'graphs#search', :as => :search_graph
   match 'graphs/:id/graphdata' => 'graphs#graphdata', :as => :graphdata
   resources :graphs

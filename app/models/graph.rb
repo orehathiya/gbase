@@ -1,6 +1,7 @@
 class Graph < ActiveRecord::Base
-  attr_accessible :description, :title, :chart_type, :data
+  attr_accessible :title, :description, :chart_type, :data
 
+  validates :title, :data, :presence => true
   validate :valid_json
 
   def valid_json 

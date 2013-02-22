@@ -3,7 +3,7 @@
 
 // set callback of change chart type function
 document.addEventListener('DOMContentLoaded', function() {
-  select = document.getElementById('chart_type')
+  select = document.getElementById('chart_type');
   select.addEventListener('change', function() {
     var chart = selectChart(select.selectedIndex);
     chart.draw(data, {width: 600, height: 360});
@@ -27,17 +27,6 @@ function drawChart() {
   chart.draw(data, {width: 600, height: 360});
 }
 
-function selectChart(index) {
-  var chart;
-  if (index == 0) {
-    chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-  } else if (index == 1) {
-    chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-  } else if (index == 2) {
-    chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-  }
-  return chart;
-}
 </script>
 
 <p id="notice"><%= notice %></p>

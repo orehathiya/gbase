@@ -1,4 +1,19 @@
-<%= form_for(@graph, :html => {:onsubmit => "return validateForm();"}) do |f| %>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+
+google.load('visualization', '1', {'packages':['corechart']});
+ 
+function previewChart() {
+  var chart = selectChart(document.getElementById('graph_chart_type').selectedIndex);
+  var jsonData = document.getElementById('graph_data').value;
+  var data = new google.visualization.DataTable(jsonData);
+
+  chart.draw(data, {width: 600, height: 360});
+}
+
+</script>
+
+<%= form_for(@graph) do |f| %>
   <% if @graph.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@graph.errors.count, "error") %> prohibited this graph from being saved:</h2>
@@ -17,7 +32,7 @@
   </div>
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :class => 'description_field' %>
   </div>
   <div class="field">
     <%= f.label :chart_type %><br />
@@ -25,10 +40,14 @@
   </div>
   <div class="field">
     <%= f.label :data %><br />
-    <%= f.text_area :data %>
+    <%= f.text_area :data, :class => 'data_field' %>
   </div>
+  ※フォーマットについては<%= link_to "こちら", "https://developers.google.com/chart/interactive/docs/datatables_dataviews?hl=ja#javascriptliteral" %>を参照してください.
 
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+<button onclick="previewChart();">Preview</button>
+<div id="chart_div"></div>

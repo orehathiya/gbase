@@ -2,8 +2,7 @@ class GraphsController < ApplicationController
   # GET /graphs
   # GET /graphs.json
   def index
-    # @graphs = Graph.all
-    @graphs = Graph.paginate(:page => params[:page], :per_page => 4)
+    @graphs = Graph.paginate(:page => params[:page], :per_page => 12)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -85,7 +84,7 @@ class GraphsController < ApplicationController
   # GET /graphs/search
   # GET /graphs/search.json
   def search
-    @graphs = Graph.where(["title LIKE ?", "%#{params[:keyword]}%"]).paginate(:page => params[:page], :per_page => 4)
+    @graphs = Graph.where(["title LIKE ?", "%#{params[:keyword]}%"]).paginate(:page => params[:page], :per_page => 12)
 
     respond_to do |format|
       format.html # search.html.erb
