@@ -1,7 +1,7 @@
 <h1>Listing graphs</h1>
 
 <ul class="thumbnails">
-  <% @graphs.each_with_index do |graph| %>
+  <% @graphs.each do |graph| %>
     <li class="span3">
       <div class="thumbnail">
         <p>
@@ -13,12 +13,9 @@
         <p class="graph_desc">
         <%= graph.description %>
         </p>
-        <%= link_to 'Show', graph %>
-        <%= link_to 'Edit', edit_graph_path(graph) %>
-        <%= link_to 'Destroy', graph, method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
     </li>
   <% end %>
-</div>
+</ul>
 
 <%= will_paginate @graphs %>

@@ -1,22 +1,21 @@
 <h1>Search result</h1>
 
-<div class="thumb_list">
+<ul class="thumbnails">
   <% @graphs.each do |graph| %>
-    <div class="thumb_col">
-      <p>
-      <%= graph.created_at %>
-      </p>
-      <p class="font12">
-      <%= link_to graph.title, graph %>
-      </p>
-      <p>
-      <%= graph.description %>
-      </p>
-      <%= link_to 'Show', graph %>
-      <%= link_to 'Edit', edit_graph_path(graph) %>
-      <%= link_to 'Destroy', graph, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div>
+    <li class="span3">
+      <div class="thumbnail">
+        <p>
+        <%= graph.created_at %>
+        </p>
+        <p class="font12">
+        <%= link_to graph.title, graph %>
+        </p>
+        <p class="graph_desc">
+        <%= graph.description %>
+        </p>
+      </div>
+    </li>
   <% end %>
-</div>
+</ul>
 
 <%= will_paginate @graphs %>
