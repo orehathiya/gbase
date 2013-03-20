@@ -49,7 +49,7 @@
             <ul class="nav">
               <li><%= link_to "about", about_path  %></li>
               <li><%= link_to "new graph", new_graph_path  %></li>
-              <li><%= link_to "contact", ""  %></li>
+              <li><%= link_to "contact", contact_path  %></li>
               <li>
               <%= form_tag :search_graph, :method => :get, :class => "navbar-search pull-left" do %>
                 <%= text_field_tag "keyword", params[:keyword], :class => "search-query", :placeholder => "Search" %>

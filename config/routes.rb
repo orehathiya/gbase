@@ -1,8 +1,12 @@
 Gbase::Application.routes.draw do
   match 'about' => 'about#index', :as => :about
+
   match 'graphs/search' => 'graphs#search', :as => :search_graph
   match 'graphs/:id/graphdata' => 'graphs#graphdata', :as => :graphdata
   resources :graphs
+
+  match 'contact' => 'contact#index', :as => :contact, :via => :get
+  match 'contact' => 'contact#send_email', :as => :send_email, :via => :post
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
