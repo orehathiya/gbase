@@ -17,3 +17,5 @@
 # Ignore capistrano files
 Capfile
 config/deploy.rb
+
+config/database.yml
