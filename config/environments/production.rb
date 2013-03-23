@@ -76,5 +76,5 @@ Gbase::Application.configure do
   :enable_starttls_auto => true  }
 
   # sub uri
-  ActionController::Base.relative_url_root = "/gbase"
+  config.action_controller.relative_url_root = "/gbase"
 end
