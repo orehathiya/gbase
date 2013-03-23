@@ -71,7 +71,7 @@ Gbase::Application.configure do
   :address              => "localhost",
   :port                 => 25,
   :authentication       => 'plain',
-  :enable_starttls_auto => true  }
+  :enable_starttls_auto => false  }
 
   # sub uri
   config.action_controller.relative_url_root = "/gbase"
