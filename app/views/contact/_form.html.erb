@@ -1,4 +1,4 @@
-<%= form_tag("/contact") do %>
+<%= form_tag(send_email_path) do %>
   <div class="field">
     <%= label_tag(:name, "name:") %>
     <%= text_field_tag(:name) %>
